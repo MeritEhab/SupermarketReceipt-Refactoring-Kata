@@ -14,7 +14,7 @@ class Teller:
     def checks_out_articles_from(self, the_cart):
         receipt = Receipt()
         [self._add_to(receipt, item) for item in the_cart.items]
-        the_cart.handle_offers(receipt, self.offers, self.catalog)
+        the_cart.apply_offers(receipt, self.offers, self.catalog)
         return receipt
     
     def _add_to(self, receipt, item):
