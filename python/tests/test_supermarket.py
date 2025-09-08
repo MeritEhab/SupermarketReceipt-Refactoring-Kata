@@ -22,11 +22,16 @@ class TestSupermarket(unittest.TestCase):
         self.expect_receipt_properties(4.975, 0, 1)
         self.expect_receipt_item_properties(self.receipt.items[0], self.apples, 1.99, 2.5 * 1.99, 2.5)
 
-    def test_ten_percent_discount(self):
-        self.teller.add_special_offer(SpecialOfferType.TEN_PERCENT_DISCOUNT, self.toothbrush, 10.0)
+    def test_percent_discount(self):
+        self.teller.add_special_offer(SpecialOfferType.PERCENT_DISCOUNT, self.toothbrush, 10.0)
         self.given_cart_with(self.toothbrush, 3)
         self.expect_receipt_properties(2.673, 1, 1)
         self.expect_receipt_item_properties(self.receipt.items[0], self.toothbrush, 0.99, 3 * 0.99, 3)
+
+        self.teller.add_special_offer(SpecialOfferType.PERCENT_DISCOUNT, self.apples, 30.0)
+        self.given_cart_with(self.apples, 5)
+        self.expect_receipt_properties(9.637, 2, 2)
+        self.expect_receipt_item_properties(self.receipt.items[1], self.apples, 1.99, 5 * 1.99, 5)
     
     def test_three_for_two_offer(self):
         self.teller.add_special_offer(SpecialOfferType.THREE_FOR_TWO, self.milk, 0)
@@ -47,7 +52,7 @@ class TestSupermarket(unittest.TestCase):
         self.expect_receipt_item_properties(self.receipt.items[0], self.toothpaste, 1.79, 5 * 1.79, 5)
     
     def test_receipt_with_all_offers(self):
-        self.teller.add_special_offer(SpecialOfferType.TEN_PERCENT_DISCOUNT, self.toothbrush, 10.0)
+        self.teller.add_special_offer(SpecialOfferType.PERCENT_DISCOUNT, self.toothbrush, 10.0)
         self.teller.add_special_offer(SpecialOfferType.THREE_FOR_TWO, self.milk, 0)
         self.teller.add_special_offer(SpecialOfferType.FIVE_FOR_AMOUNT, self.toothpaste, 7.49)
         self.given_cart_with(self.apples, 2.5)
