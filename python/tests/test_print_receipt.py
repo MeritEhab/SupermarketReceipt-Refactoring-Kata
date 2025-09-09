@@ -6,10 +6,10 @@ from assertpy import assert_that
 
 from model_objects import Product, ProductUnit, Discount
 from receipt import Receipt
-from receipt_printer import ReceiptPrinter, HtmlReceiptPrinter
+from receipt_printer import TextReceiptPrinter, HtmlReceiptPrinter
 
 
-class TestReceiptPrinter(unittest.TestCase):
+class TestTextReceiptPrinter(unittest.TestCase):
     def setUp(self):
         self.toothbrush = Product("toothbrush", ProductUnit.EACH)
         self.apples = Product("apples", ProductUnit.KILO)
@@ -58,7 +58,7 @@ class TestReceiptPrinter(unittest.TestCase):
     
     def given(self, function_name):
         self.expected_output = self._get_receipt_comparable_result(f"{self.class_name}.{function_name}.txt")
-        self.result = ReceiptPrinter().print_receipt(self.receipt)
+        self.result = TextReceiptPrinter().print_receipt(self.receipt)
         return self
 
     def expect_formatted_text_receipt(self):
