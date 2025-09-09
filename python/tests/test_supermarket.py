@@ -65,6 +65,12 @@ class TestSupermarket(unittest.TestCase):
         self.expect_receipt_item_properties(self.receipt.items[2], self.milk, 3.0, 5 * 3.0, 5)
         self.expect_receipt_item_properties(self.receipt.items[3], self.toothpaste, 1.79, 5 * 1.79, 5)
     
+    def test_bundle_offer(self):
+        bundle = {self.toothbrush: 1, self.toothpaste: 1}
+        self.teller.add_special_offer(SpecialOfferType.BUNDLE_DISCOUNT, self.toothbrush, bundle)
+        self.given_cart_with(self.toothbrush, 2)
+        self.given_cart_with(self.toothpaste, 1)
+        self.expect_receipt_properties(3.492, 1, 2)
 
     def make_catalog(self):
         catalog = FakeCatalog()

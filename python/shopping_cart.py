@@ -43,6 +43,7 @@ class OfferHandler:
             SpecialOfferType.THREE_FOR_TWO: strategies.AForBStrategy(buy=3, pay=2),
             SpecialOfferType.TWO_FOR_AMOUNT: strategies.NForAmountStrategy(pack_size=2),
             SpecialOfferType.FIVE_FOR_AMOUNT: strategies.NForAmountStrategy(pack_size=5),
+            SpecialOfferType.BUNDLE_DISCOUNT: strategies.BundleStrategy(self.products, self.catalog)
         }
 
 
