@@ -1,4 +1,1 @@
-approvaltests
-python-dateutil
-pytest-approvaltests
-
+assertpy

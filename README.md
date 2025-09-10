@@ -1,6 +1,6 @@
 _Support this and all my katas via [Patreon](https://www.patreon.com/EmilyBache)_
 
-# The Supermarket Receipt Refactoring Kata
+# The Supermarket Receipt Refactoring Kata (Original ReadMe)
 
 Watch the ["Detangle Bad Code Challenge"](https://youtu.be/EWB-VhEUoHE) introduction to this exercise.
 
@@ -44,3 +44,55 @@ Those tests have reasonably good coverage and should support most kinds of refac
 ## Use this exercise in a Learning Hour
 
 You can use the [Supermarket Receipt](https://sammancoaching.org/kata_descriptions/supermarket_receipt.html) Kata in learning hours if you are using the [Samman](https://sammancoaching.org) coaching method.
+
+
+# Setup Environment
+
+This Kata has been solved in [Python](https://www.python.org/)
+
+## Setup
+
+* Have Python installed
+* Clone the repository
+* On the command line, enter the `SupermarketReceipt-Refactoring-Kata` directory
+* On the command line, create a new virtual environment, eg `python -m venv .venv`
+* On the command line, create a new virtual environment, eg `source .venv/scripts/activate`
+* On the command line, install requirements, e.g. on the`python -m pip install -r requirements.txt`
+
+## Running Tests
+
+On the command line, enter the `SupermarketReceipt-Refactoring-Kata` directory and run
+
+```
+pytest
+```
+
+## Optional: Running [TextTest](https://www.texttest.org/) Tests
+
+Install TextTest according to the [instructions](https://www.texttest.org/index.html#getting-started-with-texttest) (platform specific).
+
+On the command line, enter the `SupermarketReceipt-Refactoring-Kata` directory and run
+
+```
+texttest -a sr -d .
+```
+
+# Solution Summary
+
+Solved the kata requirements including 
+
+1- Adding test coverage for shopping cart and receipt printer classes 
+
+2- Adding the new functionalities of:
+    
+    2.1 - Bundle discount handling 
+    
+    2.2 - Print receipt in HTML format 
+
+3- Refactor code to be more readable, maintainable, easier to extend, this includes:
+    
+    3.1 - Applying single responsibility principle where it can by making functions and classes do one thing and one thing only
+    
+    3.2 - Applying inheritance for receipt printer to have common code that could be used in other classes to print receipt in other formats if needed
+    
+    3.3 - Tried to simplify the code as much as possible sepeacliy for the offers calculation part 
